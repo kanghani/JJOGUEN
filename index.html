@@ -240,4 +240,38 @@
             <div class="text-gray-500 text-center md:text-right text-xs leading-6">
                 <p><span class="text-brand-deep dark:text-brand-pink font-bold">주소</span> 제주특별자치도 제주시 신산로 82, 제주콘텐츠코리아랩 3호실</p>
                 <p><span class="text-brand-deep dark:text-brand-pink font-bold">연락처</span> 064-757-6991 &nbsp;|&nbsp; <span class="text-brand-deep dark:text-brand-pink font-bold">대표</span> 권윤희</p>
-                <p class="mt-2 text-gray-600 dark:text-gray-
+                <p class="mt-2 text-gray-600 dark:text-gray-700">Copyright © 2025 Jjogeun Myeoneuri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    </script>
+
+</body>
+</html>
