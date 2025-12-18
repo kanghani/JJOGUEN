@@ -12,15 +12,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class', // 다크모드 수동 전환 설정
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         brand: { 
                             pink: '#FF9EBC',  // 연분홍 (Light Pink)
-                            deep: '#FF5A92',  // 진한 핑크 (라이트모드용 텍스트)
+                            deep: '#FF5A92',  // 진한 핑크
                             dark: '#111111',  // 딥 블랙
-                            light: '#F8F9FA'  // 밝은 배경
+                            light: '#F8F9FA'
                         }
                     },
                     fontFamily: { sans: ['Pretendard', 'sans-serif'] }
@@ -29,32 +29,16 @@
         }
     </script>
     <style>
-        /* 부드러운 색상 전환 */
         body { transition: background-color 0.3s, color 0.3s; }
         
-        /* 텍스트 그라데이션 (다크모드용) */
-        .text-gradient-dark {
-            background: linear-gradient(to right, #FF9EBC, #FFFFFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* 텍스트 그라데이션 (라이트모드용) */
-        .text-gradient-light {
-            background: linear-gradient(to right, #FF5A92, #bd2c66);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* 멤버 카드 호버 효과 */
-        .card-transition { transition: all 0.4s ease; }
+        /* 카드 호버링 애니메이션 속도 */
+        .card-transition { transition: all 0.3s ease-in-out; }
         
-        /* 다크모드 호버링 (빛나는 효과) */
-        .dark .hover-blue:hover   { border-color: #60A5FA; box-shadow: 0 0 25px rgba(96, 165, 250, 0.5); transform: translateY(-10px); }
-        .dark .hover-pink:hover   { border-color: #FF9EBC; box-shadow: 0 0 25px rgba(255, 158, 188, 0.5); transform: translateY(-10px); }
-        .dark .hover-orange:hover { border-color: #FB923C; box-shadow: 0 0 25px rgba(251, 146, 60, 0.5); transform: translateY(-10px); }
-        
-        /* 라이트모드 호버링 (그림자 강조) */
-        .hover-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        /* 라이트모드 카드 호버 효과 */
+        .hover-card-light:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-brand-light text-gray-900 dark:bg-brand-dark dark:text-white">
@@ -75,7 +59,9 @@
                     </div>
                     
                     <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-yellow-300 hover:ring-2 ring-brand-pink transition-all">
-                        <i class="fas fa-sun block dark:hidden"></i> <i class="fas fa-moon hidden dark:block"></i> </button>
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block"></i>
+                    </button>
 
                     <a href="#contact" class="bg-brand-deep dark:bg-brand-pink text-white dark:text-gray-900 px-5 py-2 rounded-full font-bold hover:opacity-90 transition shadow-lg">
                         문의하기
@@ -143,63 +129,69 @@
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
                 
-                <div class="card-transition hover-card dark:hover-blue bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm 
+                            dark:hover:border-blue-400 dark:hover:shadow-[0_0_20px_rgba(96,165,250,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_blue.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">HARU</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Leader</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-blue-500 transition-colors">Leader</p>
                     </div>
                 </div>
 
-                <div class="card-transition hover-card dark:hover-pink bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm
+                            dark:hover:border-pink-400 dark:hover:shadow-[0_0_20px_rgba(244,114,182,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_pink.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-pink-500 dark:group-hover:text-pink-300 transition-colors">NOA</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Center</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-pink-400 transition-colors">Center</p>
                     </div>
                 </div>
 
-                <div class="card-transition hover-card dark:hover-orange bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm
+                            dark:hover:border-orange-400 dark:hover:shadow-[0_0_20px_rgba(251,146,60,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_orange.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">SORA</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Vocal</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-orange-400 transition-colors">Vocal</p>
                     </div>
                 </div>
                 
-                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-purple-400 dark:hover:shadow-[0_0_20px_rgba(192,132,252,0.5)]">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm
+                            dark:hover:border-purple-400 dark:hover:shadow-[0_0_20px_rgba(192,132,252,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_purple.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">RAUM</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Dance</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-purple-400 transition-colors">Dance</p>
                     </div>
                 </div>
 
-                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-green-400 dark:hover:shadow-[0_0_20px_rgba(74,222,128,0.5)]">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm
+                            dark:hover:border-green-400 dark:hover:shadow-[0_0_20px_rgba(74,222,128,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_green.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors">BINO</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Rapper</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-green-400 transition-colors">Rapper</p>
                     </div>
                 </div>
 
-                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-yellow-400 dark:hover:shadow-[0_0_20px_rgba(250,204,21,0.5)]">
+                <div class="card-transition hover-card-light bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm
+                            dark:hover:border-yellow-400 dark:hover:shadow-[0_0_20px_rgba(250,204,21,0.5)]">
                     <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
                         <img src="images/member_yellow.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
                         <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">JIA</h3>
-                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Producer</p>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase group-hover:text-yellow-400 transition-colors">Producer</p>
                     </div>
                 </div>
 
@@ -248,42 +240,4 @@
             <div class="text-gray-500 text-center md:text-right text-xs leading-6">
                 <p><span class="text-brand-deep dark:text-brand-pink font-bold">주소</span> 제주특별자치도 제주시 신산로 82, 제주콘텐츠코리아랩 3호실</p>
                 <p><span class="text-brand-deep dark:text-brand-pink font-bold">연락처</span> 064-757-6991 &nbsp;|&nbsp; <span class="text-brand-deep dark:text-brand-pink font-bold">대표</span> 권윤희</p>
-                <p class="mt-2 text-gray-600 dark:text-gray-700">Copyright © 2025 Jjogeun Myeoneuri. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // 1. 모바일 메뉴 토글
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-
-        // 2. 다크모드 토글 로직
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        
-        // 초기 설정: 사용자 시스템 설정이나 저장된 값 확인
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-
-        // 토글 함수
-        function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
-    </script>
-
-</body>
-</html>
+                <p class="mt-2 text-gray-600 dark:text-gray-
