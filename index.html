@@ -9,66 +9,281 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class', // 다크모드 수동 전환 설정
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            pink: '#FF007F', // 쪼근며느리 핫핑크
-                            dark: '#050505', // 더 깊은 블랙
-                            glass: 'rgba(255, 255, 255, 0.05)'
+                        brand: { 
+                            pink: '#FF9EBC',  // 연분홍 (Light Pink)
+                            deep: '#FF5A92',  // 진한 핑크 (라이트모드용 텍스트)
+                            dark: '#111111',  // 딥 블랙
+                            light: '#F8F9FA'  // 밝은 배경
                         }
                     },
-                    fontFamily: {
-                        sans: ['Pretendard', 'sans-serif'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 10s linear infinite',
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'kenburns': 'kenburns 20s ease-out infinite alternate',
-                    },
-                    keyframes: {
-                        kenburns: {
-                            '0%': { transform: 'scale(1)' },
-                            '100%': { transform: 'scale(1.2)' },
-                        }
-                    }
+                    fontFamily: { sans: ['Pretendard', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: white; overflow-x: hidden; }
+        /* 부드러운 색상 전환 */
+        body { transition: background-color 0.3s, color 0.3s; }
         
-        /* 글리치 텍스트 효과 (로봇 느낌) */
-        .glitch-wrapper { position: relative; display: inline-block; }
-        .glitch { position: relative; color: white; mix-blend-mode: lighten; }
-        .glitch:before, .glitch:after { content: attr(data-text); position: absolute; top: 0; width: 100%; height: 100%; background: #050505; }
-        .glitch:before { left: 2px; text-shadow: -1px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
-        .glitch:after { left: -2px; text-shadow: -1px 0 #00fff9; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
-        @keyframes glitch-anim {
-            0% { clip: rect(30px, 9999px, 10px, 0); }
-            20% { clip: rect(50px, 9999px, 80px, 0); }
-            40% { clip: rect(10px, 9999px, 60px, 0); }
-            60% { clip: rect(70px, 9999px, 20px, 0); }
-            80% { clip: rect(20px, 9999px, 50px, 0); }
-            100% { clip: rect(60px, 9999px, 30px, 0); }
+        /* 텍스트 그라데이션 (다크모드용) */
+        .text-gradient-dark {
+            background: linear-gradient(to right, #FF9EBC, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(10px, 9999px, 80px, 0); }
-            20% { clip: rect(70px, 9999px, 10px, 0); }
-            40% { clip: rect(30px, 9999px, 50px, 0); }
-            60% { clip: rect(80px, 9999px, 20px, 0); }
-            80% { clip: rect(40px, 9999px, 60px, 0); }
-            100% { clip: rect(20px, 9999px, 70px, 0); }
+        /* 텍스트 그라데이션 (라이트모드용) */
+        .text-gradient-light {
+            background: linear-gradient(to right, #FF5A92, #bd2c66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Swiper 커스텀 */
-        .swiper-pagination-bullet { background: white; opacity: 0.5; }
-        .swiper-pagination-bullet-active
+        /* 멤버 카드 호버 효과 */
+        .card-transition { transition: all 0.4s ease; }
+        
+        /* 다크모드 호버링 (빛나는 효과) */
+        .dark .hover-blue:hover   { border-color: #60A5FA; box-shadow: 0 0 25px rgba(96, 165, 250, 0.5); transform: translateY(-10px); }
+        .dark .hover-pink:hover   { border-color: #FF9EBC; box-shadow: 0 0 25px rgba(255, 158, 188, 0.5); transform: translateY(-10px); }
+        .dark .hover-orange:hover { border-color: #FB923C; box-shadow: 0 0 25px rgba(251, 146, 60, 0.5); transform: translateY(-10px); }
+        
+        /* 라이트모드 호버링 (그림자 강조) */
+        .hover-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    </style>
+</head>
+<body class="font-sans antialiased bg-brand-light text-gray-900 dark:bg-brand-dark dark:text-white">
+
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-black/90 border-b border-gray-200 dark:border-white/10 backdrop-blur-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer">
+                    <img src="images/logo_full.png" alt="JJOME GIRLS" class="h-10 md:h-12 w-auto object-contain filter dark:brightness-100 brightness-90">
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="#home" class="text-gray-600 dark:text-white hover:text-brand-deep dark:hover:text-brand-pink font-bold transition-colors">HOME</a>
+                        <a href="#about" class="text-gray-600 dark:text-white hover:text-brand-deep dark:hover:text-brand-pink font-bold transition-colors">ABOUT</a>
+                        <a href="#idol" class="text-brand-deep dark:text-brand-pink font-black tracking-wider border-b-2 border-brand-deep dark:border-brand-pink pb-1">JJOME GIRLS</a>
+                        <a href="#business" class="text-gray-600 dark:text-white hover:text-brand-deep dark:hover:text-brand-pink font-bold transition-colors">BUSINESS</a>
+                    </div>
+                    
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-yellow-300 hover:ring-2 ring-brand-pink transition-all">
+                        <i class="fas fa-sun block dark:hidden"></i> <i class="fas fa-moon hidden dark:block"></i> </button>
+
+                    <a href="#contact" class="bg-brand-deep dark:bg-brand-pink text-white dark:text-gray-900 px-5 py-2 rounded-full font-bold hover:opacity-90 transition shadow-lg">
+                        문의하기
+                    </a>
+                </div>
+                
+                <div class="-mr-2 flex md:hidden items-center gap-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-yellow-300">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 p-2">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-white/10">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#home" class="mobile-link block py-2 font-bold hover:text-brand-pink">HOME</a>
+                <a href="#idol" class="mobile-link block py-2 text-brand-deep dark:text-brand-pink font-bold">JJOME GIRLS</a>
+                <a href="#business" class="mobile-link block py-2 font-bold hover:text-brand-pink">BUSINESS</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-20 px-4 flex flex-col items-center text-center bg-white dark:bg-gradient-to-b dark:from-black dark:via-[#1a1a1a] dark:to-black transition-colors duration-500">
+        
+        <span class="text-brand-deep dark:text-brand-pink font-bold tracking-[0.3em] mb-4 animate-pulse">JEJU ROBOT IDOL</span>
+        
+        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight">
+            BEYOND <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-deep to-purple-600 dark:from-brand-pink dark:to-white">REALITY,</span><br>
+            PERFECT <span class="text-gray-900 dark:text-white">HARMONY.</span>
+        </h1>
+        
+        <p class="text-gray-500 dark:text-gray-300 max-w-2xl mb-10 text-lg font-light leading-relaxed">
+            로봇에 감성을, 제주에 문화를 입히다.<br>
+            제주 유일의 로봇 엔터테인먼트 그룹 <strong>'쪼근며느리'</strong>
+        </p>
+
+        <div class="relative w-full max-w-4xl mb-10 group">
+            <div class="absolute inset-0 bg-brand-pink/30 blur-[60px] rounded-full opacity-0 dark:opacity-60 group-hover:opacity-90 transition-opacity duration-700"></div>
+            <img src="images/group_main.png" alt="단체사진" class="relative z-10 w-full h-auto rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl">
+        </div>
+
+        <div class="flex gap-4">
+            <a href="#idol" class="px-8 py-4 bg-brand-deep dark:bg-brand-pink text-white dark:text-gray-900 font-bold rounded-full hover:scale-105 transition shadow-lg">
+                멤버 프로필 보기
+            </a>
+            <a href="https://blog.naver.com/yk7948" target="_blank" class="px-8 py-4 border border-gray-300 dark:border-white/30 text-gray-700 dark:text-white font-bold rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition">
+                공식 블로그
+            </a>
+        </div>
+    </section>
+
+    <section id="idol" class="py-24 bg-gray-50 dark:bg-black relative overflow-hidden transition-colors duration-500">
+        <div class="hidden dark:block absolute top-0 right-0 w-80 h-80 bg-brand-pink/5 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-2 text-gray-900 dark:text-white">MEET THE <span class="text-brand-deep dark:text-brand-pink">GIRLS</span></h2>
+                <p class="text-gray-500">카드를 선택하면 각 멤버의 색으로 빛납니다!</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+                
+                <div class="card-transition hover-card dark:hover-blue bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_blue.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">HARU</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Leader</p>
+                    </div>
+                </div>
+
+                <div class="card-transition hover-card dark:hover-pink bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_pink.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-pink-500 dark:group-hover:text-pink-300 transition-colors">NOA</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Center</p>
+                    </div>
+                </div>
+
+                <div class="card-transition hover-card dark:hover-orange bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_orange.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">SORA</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Vocal</p>
+                    </div>
+                </div>
+                
+                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-purple-400 dark:hover:shadow-[0_0_20px_rgba(192,132,252,0.5)]">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_purple.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">RAUM</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Dance</p>
+                    </div>
+                </div>
+
+                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-green-400 dark:hover:shadow-[0_0_20px_rgba(74,222,128,0.5)]">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_green.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors">BINO</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Rapper</p>
+                    </div>
+                </div>
+
+                <div class="card-transition hover-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer group shadow-sm hover:shadow-xl dark:hover:border-yellow-400 dark:hover:shadow-[0_0_20px_rgba(250,204,21,0.5)]">
+                    <div class="h-64 bg-gray-100 dark:bg-gray-800/50 relative overflow-hidden flex items-end justify-center">
+                        <img src="images/member_yellow.png" class="h-[90%] w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 text-center bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 relative z-10">
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">JIA</h3>
+                        <p class="text-brand-deep dark:text-gray-400 text-xs font-bold uppercase">Producer</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="business" class="py-20 bg-white dark:bg-[#151515] transition-colors duration-500">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-brand-deep dark:text-brand-pink font-bold tracking-widest">BUSINESS AREA</span>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mt-2">창의적인 로봇 콘텐츠 기업</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 dark:bg-black p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-deep dark:hover:border-brand-pink/50 hover:shadow-lg transition group">
+                    <div class="w-14 h-14 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center text-brand-deep dark:text-brand-pink text-2xl mb-6 group-hover:bg-brand-deep dark:group-hover:bg-brand-pink group-hover:text-white dark:group-hover:text-gray-900 transition">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Tech Solution</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">로봇 및 기자재 수리<br>3D 프린팅 시제품<br>SW 개발</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-black p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-deep dark:hover:border-brand-pink/50 hover:shadow-lg transition group">
+                    <div class="w-14 h-14 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center text-brand-deep dark:text-brand-pink text-2xl mb-6 group-hover:bg-brand-deep dark:group-hover:bg-brand-pink group-hover:text-white dark:group-hover:text-gray-900 transition">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Edutech</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">찾아가는 진로 체험<br>AI & 로봇 융합 교육<br>관공서 프로그램</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-black p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-deep dark:hover:border-brand-pink/50 hover:shadow-lg transition group">
+                    <div class="w-14 h-14 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center text-brand-deep dark:text-brand-pink text-2xl mb-6 group-hover:bg-brand-deep dark:group-hover:bg-brand-pink group-hover:text-white dark:group-hover:text-gray-900 transition">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Entertainment</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">로봇 아이돌 공연 기획<br>캐릭터 굿즈 개발<br>지역 축제 기획</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-100 dark:bg-black py-12 border-t border-gray-200 dark:border-white/10 text-sm transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="images/logo_full.png" alt="로고" class="h-10 opacity-70 hover:opacity-100 transition filter dark:brightness-100 brightness-75">
+            </div>
+            <div class="text-gray-500 text-center md:text-right text-xs leading-6">
+                <p><span class="text-brand-deep dark:text-brand-pink font-bold">주소</span> 제주특별자치도 제주시 신산로 82, 제주콘텐츠코리아랩 3호실</p>
+                <p><span class="text-brand-deep dark:text-brand-pink font-bold">연락처</span> 064-757-6991 &nbsp;|&nbsp; <span class="text-brand-deep dark:text-brand-pink font-bold">대표</span> 권윤희</p>
+                <p class="mt-2 text-gray-600 dark:text-gray-700">Copyright © 2025 Jjogeun Myeoneuri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. 모바일 메뉴 토글
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+        // 2. 다크모드 토글 로직
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        
+        // 초기 설정: 사용자 시스템 설정이나 저장된 값 확인
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // 토글 함수
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    </script>
+
+</body>
+</html>
