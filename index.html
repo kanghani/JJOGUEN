@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쪼근며느리 | JJOME GIRLS</title>
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#FF007F', // 쪼근며느리 핫핑크
+                            dark: '#0F172A', // 배경 네이비
+                            light: '#F8F9FA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0F172A; color: white; }
+        .gradient-text {
+            background: linear-gradient(to right, #FF007F, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* 네온 효과 스타일 */
+        .neon-blue:hover { box-shadow: 0 0 20px rgba(30, 144, 255, 0.6); border-color: rgba(30, 144, 255, 0.6); }
+        .neon-green:hover { box-shadow: 0 0 20px rgba(50, 205, 50, 0.6); border-color: rgba(50, 205, 50, 0.6); }
+        .neon-orange:hover { box-shadow: 0 0 20px rgba(255, 140, 0, 0.6); border-color: rgba(255, 140, 0, 0.6); }
+        .neon-purple:hover { box-shadow: 0 0 20px rgba(186, 85, 211, 0.6); border-color: rgba(186, 85, 211, 0.6); }
+        .neon-pink:hover { box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); border-color: rgba(255, 105, 180, 0.6); }
+        .neon-yellow:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); border-color: rgba(255, 215, 0, 0.6); }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden relative">
+
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer flex items-center">
+                    <img src="images/logo_full.png" alt="쪼근며느리 JJOME GIRLS" class="h-10 md:h-14 w-auto object-contain">
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-brand-pink transition-colors px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+                        <a href="#about" class="hover:text-brand-pink transition-colors px-3 py-2 rounded-md text-sm font-medium">ABOUT</a>
+                        <a href="#idol" class="text-brand-pink font-bold px-3 py-2 rounded-md text-sm animate-pulse">JJOME GIRLS</a>
+                        <a href="#business" class="hover:text-brand-pink transition-colors px-3 py-2 rounded-md text-sm font-medium">BUSINESS</a>
+                        <a href="#contact" class="bg-brand-pink hover:bg-pink-600 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg shadow-pink-500/30 transition-all">문의하기</a>
+                    </div>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2 focus:outline-none">
+                        <i class="fas fa-bars fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-white/10 shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#home" class="mobile-link block hover:bg-slate-800 hover:text-brand-pink px-3 py-3 rounded-md text-base font-medium">HOME</a>
+                <a href="#about" class="mobile-link block hover:bg-slate-800 hover:text-brand-pink px-3 py-3 rounded-md text-base font-medium">ABOUT</a>
+                <a href="#idol" class="mobile-link block hover:bg-slate-800 text-brand-pink px-3 py-3 rounded-md text-base font-bold">JJOME GIRLS</a>
+                <a href="#business" class="mobile-link block hover:bg-slate-800 hover:text-brand-pink px-3 py-3 rounded-md text-base font-medium">BUSINESS</a>
+                <a href="#contact" class="mobile-link block bg-brand-pink text-white px-3 py-3 rounded-md text-base font-bold mt-4">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 pt-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#1a0b1f] to-slate-900 z-0"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+            <div class="w-full max-w-xs md:max-w-xl mb-8 relative group">
+                <div class="absolute inset-0 bg-brand-pink/40 blur-[50px] rounded-full opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <img src="images/group_main.png" alt="쪼므걸스 단체" class="relative w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 z-10 rounded-2xl">
+            </div>
+            
+            <p class="text-brand-pink font-bold text-sm md:text-base tracking-[0.3em] mb-4">JEJU ROBOT IDOL</p>
+            <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">
+                ROBOT, CULTURE,<br>
+                <span class="gradient-text">AND JEJU.</span>
+            </h1>
+            <p class="text-gray-300 text-base md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                제주의 문화를 춤추게 하다.<br class="block md:hidden"> 로봇 아이돌 <span class="text-white font-bold">'JJOME GIRLS'</span>
+            </p>
+        </div>
+    </section>
+
+    <section id="idol" class="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-black mb-4"><span class="text-brand-pink">JJOME</span> GIRLS</h2>
+                <p class="text-gray-400 text-sm md:text-base">제주의 신화와 자연에서 태어난 6인조 로봇 아이돌</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-blue">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_blue.png" alt="하루" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-blue-400 text-lg">HARU</h3>
+                        <p class="text-xs text-white font-bold mb-1">Leader / Vocal</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">돌하르방의 든든함과<br>따뜻한 리더십</p>
+                    </div>
+                </div>
+
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-pink">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_pink.png" alt="노아" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-pink-400 text-lg">NOA</h3>
+                        <p class="text-xs text-white font-bold mb-1">Visual / Vocal</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">탐라의 새 시대,<br>청초한 매력</p>
+                    </div>
+                </div>
+
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-orange">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_orange.png" alt="소라" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-orange-400 text-lg">SORA</h3>
+                        <p class="text-xs text-white font-bold mb-1">Main Vocal</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">제주 바다와 하늘을<br>닮은 청량 음색</p>
+                    </div>
+                </div>
+
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-purple">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_purple.png" alt="라움" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-purple-400 text-lg">RAUM</h3>
+                        <p class="text-xs text-white font-bold mb-1">Performance</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">무대를 가득 채우는<br>공간의 지배자</p>
+                    </div>
+                </div>
+
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-green">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_green.png" alt="비노" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-green-400 text-lg">BINO</h3>
+                        <p class="text-xs text-white font-bold mb-1">Rapper</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">제주의 비(Rain)와<br>차가운 디지털 감성</p>
+                    </div>
+                </div>
+
+                <div class="group relative bg-slate-800 rounded-xl overflow-hidden border border-transparent transition-all duration-300 neon-yellow">
+                    <div class="aspect-[3/4] bg-gray-800 p-2 flex items-center justify-center relative">
+                        <img src="images/member_yellow.png" alt="지아" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center border-t border-white/5">
+                        <h3 class="font-bold text-yellow-400 text-lg">JIA</h3>
+                        <p class="text-xs text-white font-bold mb-1">Rapper / PD</p>
+                        <p class="text-[10px] text-gray-400 leading-tight">제주 땅에서 태어난<br>천재 크리에이터</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+             <h2 class="text-3xl font-black mb-8">WHY <span class="text-brand-pink">JJOGEUN?</span></h2>
+             <p class="text-gray-300 leading-8 mb-12">
+                 쪼근며느리는 단순한 수리 업체가 아닙니다.<br>
+                 <strong>기자재 수리 기술력</strong>을 바탕으로 <strong>로봇 콘텐츠</strong>를 직접 개발하고,<br>
+                 <strong>교육 프로그램</strong>을 운영하는 제주 유일의 융복합 콘텐츠 기업입니다.
+             </p>
+             
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                 <div class="bg-slate-900 p-6 rounded-xl border border-white/5 hover:border-brand-pink/50 transition-colors">
+                     <i class="fas fa-microchip text-brand-pink text-2xl mb-4"></i>
+                     <h3 class="font-bold text-lg mb-2">Tech Solution</h3>
+                     <p class="text-gray-400 text-sm">로봇/기자재 수리 및 개발<br>3D 프린터 시제품 제작</p>
+                 </div>
+                 <div class="bg-slate-900 p-6 rounded-xl border border-white/5 hover:border-brand-pink/50 transition-colors">
+                    <i class="fas fa-child text-brand-pink text-2xl mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Education</h3>
+                    <p class="text-gray-400 text-sm">찾아가는 진로 체험<br>AI 로봇 융합 교육</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-xl border border-white/5 hover:border-brand-pink/50 transition-colors">
+                    <i class="fas fa-star text-brand-pink text-2xl mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Contents</h3>
+                    <p class="text-gray-400 text-sm">로봇 아이돌 공연 기획<br>캐릭터 및 굿즈 개발</p>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-black py-10 border-t border-white/10 text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="images/logo_full.png" alt="로고" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:opacity-100 transition-opacity">
+                <div class="text-left">
+                    <p class="text-gray-500 text-xs">제주 유일 로봇 콘텐츠 기업</p>
+                    <p class="font-bold text-gray-400">주식회사 쪼근며느리</p>
+                </div>
+            </div>
+            <div class="text-gray-500 text-center md:text-right text-xs leading-5">
+                <p>제주특별자치도 제주시 신산로 82, 제주콘텐츠코리아랩 3호실</p>
+                <p>TEL: 064-757-6991 | 대표: 권윤희</p>
+                <p class="mt-2 text-gray-700">Copyright © 2025 Jjogeun Myeoneuri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+        links.forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); }); });
+    </script>
+</body>
+</html>
